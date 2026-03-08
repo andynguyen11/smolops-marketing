@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" height="80">
+  <!-- Left circle -->
+  <circle cx="32" cy="40" r="26" fill="none" stroke="#72641c" stroke-width="3"/>
+  <!-- Right circle -->
+  <circle cx="60" cy="40" r="26" fill="none" stroke="#72641c" stroke-width="3"/>
+  <!-- Overlap hatching -->
+  <defs>
+    <clipPath id="logo-overlap">
+      <path d="M46,16.5 A26,26 0 0,1 46,63.5 A26,26 0 0,1 46,16.5 Z"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#logo-overlap)">
+    <line x1="37" y1="12" x2="37" y2="68" stroke="#72641c" stroke-width="2"/>
+    <line x1="41" y1="12" x2="41" y2="68" stroke="#72641c" stroke-width="2"/>
+    <line x1="45" y1="12" x2="45" y2="68" stroke="#72641c" stroke-width="2"/>
+    <line x1="49" y1="12" x2="49" y2="68" stroke="#72641c" stroke-width="2"/>
+    <line x1="53" y1="12" x2="53" y2="68" stroke="#72641c" stroke-width="2"/>
+    <line x1="30" y1="22" x2="62" y2="58" stroke="#72641c" stroke-width="1.5"/>
+    <line x1="30" y1="28" x2="62" y2="64" stroke="#72641c" stroke-width="1.5"/>
+    <line x1="30" y1="16" x2="62" y2="52" stroke="#72641c" stroke-width="1.5"/>
+    <line x1="36" y1="14" x2="62" y2="46" stroke="#72641c" stroke-width="1.5"/>
+    <line x1="42" y1="14" x2="62" y2="40" stroke="#72641c" stroke-width="1.5"/>
+    <line x1="30" y1="34" x2="56" y2="64" stroke="#72641c" stroke-width="1.5"/>
+    <line x1="30" y1="40" x2="50" y2="64" stroke="#72641c" stroke-width="1.5"/>
+  </g>
+  <!-- SmolOps text -->
+  <text x="100" y="54" font-family="'Fraunces', Georgia, serif" font-weight="800" font-size="44" fill="#124923">SmolOps</text>
+</svg>

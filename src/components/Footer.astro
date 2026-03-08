@@ -1,0 +1,88 @@
+---
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/images/logo.svg" alt="SmolOps" height="36" />
+        <p>AI automation for small business.<br/>No software. No hassle. Just results.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#services">Services</a>
+        <a href="#why-smolops">Why SmolOps</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {new Date().getFullYear()} SmolOps. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--green-deepest);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 56px 0 32px;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-brand img {
+    height: 36px;
+    margin-bottom: 16px;
+    filter: brightness(0) invert(1);
+  }
+
+  .footer-brand p {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 280px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 28px;
+  }
+
+  .footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--white);
+  }
+
+  .footer-bottom {
+    padding-top: 24px;
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    font-size: 13px;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 640px) {
+    .footer-inner {
+      flex-direction: column;
+      gap: 32px;
+    }
+    .footer-links {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>
