@@ -1,35 +1,219 @@
 ---
 ---
 
-<section id="contact" class="contact-section">
+<section id="audit" class="contact-section">
   <div class="container">
-    <div class="contact-grid">
-      <div class="contact-info">
-        <span class="section-label">Get Started</span>
-        <h2 class="section-title">Let's find your biggest time sink.</h2>
-        <p class="section-subtitle">
-          Tell us a bit about your business and what's eating up your time.
-          We'll get back to you within one business day with ideas on how we can help.
-        </p>
+    <div class="audit-header text-center">
+      <span class="section-label">Free AI Admin Audit</span>
+      <h2 class="section-title">Find your biggest admin bottleneck.</h2>
+      <p class="section-subtitle">
+        Answer a few quick questions about your business. We'll send you a custom report
+        showing exactly where SmolOps could remove admin work and how much time you'd save.
+      </p>
+    </div>
 
-        <div class="contact-perks">
-          <div class="perk">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M16.67 5L7.5 14.17 3.33 10" stroke="#1c7237" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Free initial consultation</span>
-          </div>
-          <div class="perk">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M16.67 5L7.5 14.17 3.33 10" stroke="#1c7237" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>No commitment required</span>
-          </div>
-          <div class="perk">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M16.67 5L7.5 14.17 3.33 10" stroke="#1c7237" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Response within 1 business day</span>
-          </div>
-        </div>
+    <div class="form-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <div class="step-indicator">
+        <span id="step-label">Step 1 of 5</span>
       </div>
 
-      <div class="contact-form-wrap">
-        <form id="contact-form" class="contact-form" method="POST" action="/api/contact">
+      <form id="audit-form" class="audit-form" method="POST" action="/api/contact">
+
+        <!-- Step 1: Business Type -->
+        <div class="form-step active" data-step="1">
+          <h3>What type of business do you run?</h3>
+          <p class="step-desc">This helps us identify the best automation opportunities for your industry.</p>
+          <div class="form-group">
+            <input
+              type="text"
+              id="business"
+              name="business"
+              required
+              placeholder="Start typing... e.g. HVAC, Restaurant, Landscaping"
+              list="business-types"
+              autocomplete="off"
+            />
+            <datalist id="business-types">
+              <option value="HVAC" />
+              <option value="Plumbing" />
+              <option value="Electrical" />
+              <option value="Landscaping" />
+              <option value="Pool Service" />
+              <option value="Restaurant" />
+              <option value="Cafe / Coffee Shop" />
+              <option value="Bar / Brewery" />
+              <option value="Salon / Spa" />
+              <option value="Barbershop" />
+              <option value="Insurance Broker" />
+              <option value="Real Estate" />
+              <option value="Property Management" />
+              <option value="Cleaning Service" />
+              <option value="Pest Control" />
+              <option value="Auto Repair" />
+              <option value="Dental Practice" />
+              <option value="Medical Practice" />
+              <option value="Veterinary" />
+              <option value="Fitness / Gym" />
+              <option value="Construction" />
+              <option value="Roofing" />
+              <option value="Moving Company" />
+              <option value="Accounting / Bookkeeping" />
+              <option value="Legal / Law Firm" />
+              <option value="Retail Store" />
+              <option value="E-commerce" />
+              <option value="Photography" />
+              <option value="Event Planning" />
+              <option value="Consulting" />
+              <option value="Trucking / Logistics" />
+              <option value="Home Inspection" />
+              <option value="Tutoring / Education" />
+              <option value="Other" />
+            </datalist>
+          </div>
+        </div>
+
+        <!-- Step 2: Biggest Time Sinks -->
+        <div class="form-step" data-step="2">
+          <h3>What admin work takes the most time every week?</h3>
+          <p class="step-desc">Select all that apply.</p>
+          <div class="checkbox-grid">
+            <label class="checkbox-card">
+              <input type="checkbox" name="time_sinks" value="Answering customer messages" />
+              <span class="checkbox-label">Answering customer messages</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="time_sinks" value="Scheduling appointments" />
+              <span class="checkbox-label">Scheduling appointments</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="time_sinks" value="Preparing quotes / estimates" />
+              <span class="checkbox-label">Preparing quotes / estimates</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="time_sinks" value="Following up with customers" />
+              <span class="checkbox-label">Following up with customers</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="time_sinks" value="Data entry / paperwork" />
+              <span class="checkbox-label">Data entry / paperwork</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="time_sinks" value="Reviewing emails" />
+              <span class="checkbox-label">Reviewing emails</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="time_sinks" value="Reporting / analytics" />
+              <span class="checkbox-label">Reporting / analytics</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="time_sinks" value="Staff scheduling" />
+              <span class="checkbox-label">Staff scheduling</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="time_sinks" value="Inventory / ordering" />
+              <span class="checkbox-label">Inventory / ordering</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="time_sinks" value="Other" />
+              <span class="checkbox-label">Other</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 3: Tools They Use -->
+        <div class="form-step" data-step="3">
+          <h3>What tools does your business already use?</h3>
+          <p class="step-desc">Select all that apply. This tells us where to plug in.</p>
+          <div class="checkbox-grid">
+            <label class="checkbox-card">
+              <input type="checkbox" name="tools" value="Gmail" />
+              <span class="checkbox-label">Gmail</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="tools" value="Google Calendar" />
+              <span class="checkbox-label">Google Calendar</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="tools" value="QuickBooks" />
+              <span class="checkbox-label">QuickBooks</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="tools" value="Square" />
+              <span class="checkbox-label">Square</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="tools" value="Toast" />
+              <span class="checkbox-label">Toast</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="tools" value="ServiceTitan" />
+              <span class="checkbox-label">ServiceTitan</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="tools" value="Jobber" />
+              <span class="checkbox-label">Jobber</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="tools" value="Housecall Pro" />
+              <span class="checkbox-label">Housecall Pro</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="tools" value="Excel / Spreadsheets" />
+              <span class="checkbox-label">Excel / Spreadsheets</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="tools" value="Outlook" />
+              <span class="checkbox-label">Outlook</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="tools" value="Slack" />
+              <span class="checkbox-label">Slack</span>
+            </label>
+            <label class="checkbox-card">
+              <input type="checkbox" name="tools" value="Other" />
+              <span class="checkbox-label">Other</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 4: Time Lost -->
+        <div class="form-step" data-step="4">
+          <h3>How much time per week do you spend on admin work?</h3>
+          <p class="step-desc">Your best estimate is fine.</p>
+          <div class="radio-grid">
+            <label class="radio-card">
+              <input type="radio" name="hours_per_week" value="Less than 5 hours" required />
+              <span class="radio-label">
+                <strong>Less than 5 hours</strong>
+              </span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="hours_per_week" value="5-10 hours" />
+              <span class="radio-label">
+                <strong>5 to 10 hours</strong>
+              </span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="hours_per_week" value="10-20 hours" />
+              <span class="radio-label">
+                <strong>10 to 20 hours</strong>
+              </span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="hours_per_week" value="20+ hours" />
+              <span class="radio-label">
+                <strong>20+ hours</strong>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Step 5: Contact + Magic Question -->
+        <div class="form-step" data-step="5">
+          <h3>Last step. Where should we send your audit?</h3>
           <div class="form-group">
             <label for="name">Your name</label>
             <input type="text" id="name" name="name" required placeholder="Jane Smith" />
@@ -39,24 +223,23 @@
             <input type="email" id="email" name="email" required placeholder="jane@yourbusiness.com" />
           </div>
           <div class="form-group">
-            <label for="business">Type of business</label>
-            <input type="text" id="business" name="business" placeholder="e.g. Landscaping, Restaurant, HVAC..." />
-          </div>
-          <div class="form-group">
-            <label for="message">What processes take up most of your time?</label>
-            <textarea id="message" name="message" rows="4" required placeholder="Tell us about the tasks you wish you didn't have to do manually..."></textarea>
+            <label for="one_task">If you could eliminate ONE repetitive task from your business tomorrow, what would it be?</label>
+            <textarea id="one_task" name="one_task" rows="3" placeholder="e.g. I spend an hour every morning going through emails and creating to-do lists from them..."></textarea>
           </div>
 
           <!-- Cloudflare Turnstile CAPTCHA -->
           <div class="cf-turnstile" data-sitekey="0x4AAAAAACn_nDMQAfOtT8ef" data-theme="light"></div>
+        </div>
 
-          <button type="submit" class="btn btn-primary btn-full" id="submit-btn">
-            Send Message
-          </button>
+        <!-- Navigation -->
+        <div class="form-nav">
+          <button type="button" class="btn btn-outline btn-back" id="btn-back" style="visibility: hidden;">Back</button>
+          <button type="button" class="btn btn-primary" id="btn-next">Next</button>
+          <button type="submit" class="btn btn-primary" id="btn-submit" style="display: none;">Get My Free AI Audit</button>
+        </div>
 
-          <div id="form-status" class="form-status"></div>
-        </form>
-      </div>
+        <div id="form-status" class="form-status"></div>
+      </form>
     </div>
   </div>
 </section>
@@ -66,33 +249,17 @@
     background: linear-gradient(180deg, var(--cream-light) 0%, var(--cream) 100%);
   }
 
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: start;
+  .audit-header {
+    margin-bottom: 48px;
   }
 
-  .contact-info .section-subtitle {
-    margin-bottom: 32px;
+  .audit-header .section-subtitle {
+    margin: 0 auto;
   }
 
-  .contact-perks {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .perk {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-muted);
-  }
-
-  .contact-form-wrap {
+  .form-container {
+    max-width: 680px;
+    margin: 0 auto;
     background: var(--white);
     border-radius: 20px;
     padding: 40px;
@@ -100,16 +267,63 @@
     border: 1px solid rgba(18, 73, 35, 0.06);
   }
 
-  .contact-form {
+  .progress-bar {
+    height: 4px;
+    background: rgba(18, 73, 35, 0.1);
+    border-radius: 4px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--green-mid);
+    border-radius: 4px;
+    width: 20%;
+    transition: width 0.4s ease;
+  }
+
+  .step-indicator {
+    text-align: right;
+    margin-bottom: 32px;
+  }
+
+  .step-indicator span {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .audit-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+  }
+
+  .form-step {
+    display: none;
+  }
+
+  .form-step.active {
+    display: block;
+  }
+
+  .form-step h3 {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+    color: var(--green-dark);
+  }
+
+  .step-desc {
+    font-size: 15px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
   }
 
   .form-group {
     display: flex;
     flex-direction: column;
     gap: 6px;
+    margin-bottom: 20px;
   }
 
   .form-group label {
@@ -144,13 +358,114 @@
 
   .form-group textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 80px;
   }
 
-  .btn-full {
-    width: 100%;
-    justify-content: center;
-    margin-top: 4px;
+  /* Checkbox / Radio grids */
+  .checkbox-grid,
+  .radio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .checkbox-card,
+  .radio-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border: 1.5px solid rgba(18, 73, 35, 0.12);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--white);
+  }
+
+  .checkbox-card:hover,
+  .radio-card:hover {
+    border-color: var(--green-mid);
+    background: rgba(28, 114, 55, 0.03);
+  }
+
+  .checkbox-card input,
+  .radio-card input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .checkbox-card input:checked ~ .checkbox-label,
+  .radio-card input:checked ~ .radio-label {
+    color: var(--green-dark);
+    font-weight: 600;
+  }
+
+  .checkbox-card:has(input:checked),
+  .radio-card:has(input:checked) {
+    border-color: var(--green-mid);
+    background: rgba(28, 114, 55, 0.06);
+  }
+
+  .checkbox-label,
+  .radio-label {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .checkbox-label::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(18, 73, 35, 0.2);
+    border-radius: 4px;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .checkbox-card:has(input:checked) .checkbox-label::before {
+    background: var(--green-mid);
+    border-color: var(--green-mid);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 0 1 0 1.414l-5 5a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L6.5 9.086l4.293-4.293a1 1 0 0 1 1.414 0z'/%3E%3C/svg%3E");
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .radio-label::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(18, 73, 35, 0.2);
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .radio-card:has(input:checked) .radio-label::before {
+    border-color: var(--green-mid);
+    border-width: 5px;
+  }
+
+  /* Navigation */
+  .form-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    gap: 16px;
+  }
+
+  .btn-back {
+    padding: 12px 28px;
   }
 
   .form-status {
@@ -158,6 +473,7 @@
     font-size: 14px;
     font-weight: 500;
     min-height: 20px;
+    margin-top: 12px;
   }
 
   .form-status.success {
@@ -169,19 +485,16 @@
   }
 
   .cf-turnstile {
-    margin: 0 auto;
-  }
-
-  @media (max-width: 1024px) {
-    .contact-grid {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
+    margin: 8px 0;
   }
 
   @media (max-width: 640px) {
-    .contact-form-wrap {
+    .form-container {
       padding: 28px 20px;
+    }
+    .checkbox-grid,
+    .radio-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
@@ -189,19 +502,107 @@
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 <script>
-  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const form = document.getElementById('audit-form') as HTMLFormElement;
+  const steps = form.querySelectorAll('.form-step');
+  const btnNext = document.getElementById('btn-next') as HTMLButtonElement;
+  const btnBack = document.getElementById('btn-back') as HTMLButtonElement;
+  const btnSubmit = document.getElementById('btn-submit') as HTMLButtonElement;
+  const progressFill = document.getElementById('progress-fill') as HTMLDivElement;
+  const stepLabel = document.getElementById('step-label') as HTMLSpanElement;
   const status = document.getElementById('form-status') as HTMLDivElement;
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const totalSteps = steps.length;
+  let currentStep = 1;
+
+  function showStep(step: number) {
+    steps.forEach(s => s.classList.remove('active'));
+    const target = form.querySelector(`[data-step="${step}"]`);
+    target?.classList.add('active');
+
+    progressFill.style.width = `${(step / totalSteps) * 100}%`;
+    stepLabel.textContent = `Step ${step} of ${totalSteps}`;
+
+    btnBack.style.visibility = step === 1 ? 'hidden' : 'visible';
+
+    if (step === totalSteps) {
+      btnNext.style.display = 'none';
+      btnSubmit.style.display = 'inline-flex';
+    } else {
+      btnNext.style.display = 'inline-flex';
+      btnSubmit.style.display = 'none';
+    }
+  }
+
+  function validateStep(step: number): boolean {
+    const stepEl = form.querySelector(`[data-step="${step}"]`) as HTMLElement;
+    if (step === 1) {
+      const input = stepEl.querySelector('input[name="business"]') as HTMLInputElement;
+      if (!input.value.trim()) {
+        input.focus();
+        return false;
+      }
+    }
+    if (step === 2) {
+      const checked = stepEl.querySelectorAll('input[name="time_sinks"]:checked');
+      if (checked.length === 0) {
+        status.textContent = 'Please select at least one option.';
+        status.className = 'form-status error';
+        return false;
+      }
+      status.textContent = '';
+      status.className = 'form-status';
+    }
+    if (step === 4) {
+      const checked = stepEl.querySelector('input[name="hours_per_week"]:checked');
+      if (!checked) {
+        status.textContent = 'Please select an option.';
+        status.className = 'form-status error';
+        return false;
+      }
+      status.textContent = '';
+      status.className = 'form-status';
+    }
+    return true;
+  }
+
+  btnNext?.addEventListener('click', () => {
+    if (validateStep(currentStep) && currentStep < totalSteps) {
+      currentStep++;
+      showStep(currentStep);
+    }
+  });
+
+  btnBack?.addEventListener('click', () => {
+    if (currentStep > 1) {
+      currentStep--;
+      showStep(currentStep);
+      status.textContent = '';
+      status.className = 'form-status';
+    }
+  });
 
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
+    btnSubmit.disabled = true;
+    btnSubmit.textContent = 'Sending...';
     status.textContent = '';
     status.className = 'form-status';
 
     const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+
+    // Collect multi-select values
+    const timeSinks = formData.getAll('time_sinks');
+    const tools = formData.getAll('tools');
+
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      business: formData.get('business'),
+      time_sinks: timeSinks,
+      tools: tools,
+      hours_per_week: formData.get('hours_per_week'),
+      one_task: formData.get('one_task'),
+      'cf-turnstile-response': formData.get('cf-turnstile-response'),
+    };
 
     try {
       const res = await fetch('/api/contact', {
@@ -211,9 +612,23 @@
       });
 
       if (res.ok) {
-        status.textContent = 'Message sent! We\'ll be in touch soon.';
+        status.textContent = 'Your audit request has been received! We\'ll be in touch within one business day.';
         status.className = 'form-status success';
         form.reset();
+        // Show a thank you state
+        const container = document.querySelector('.form-container') as HTMLElement;
+        container.innerHTML = `
+          <div style="text-align: center; padding: 40px 20px;">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#1c7237" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 20px;">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <h3 style="font-family: 'Fraunces', serif; color: #124923; margin-bottom: 12px; font-size: 1.5rem;">Audit request received!</h3>
+            <p style="color: #555; font-size: 16px; line-height: 1.6; max-width: 400px; margin: 0 auto;">
+              We're reviewing your responses and will send your personalized AI Admin Audit within one business day.
+            </p>
+          </div>
+        `;
       } else {
         const err = await res.json();
         status.textContent = err.error || 'Something went wrong. Please try again.';
@@ -223,8 +638,8 @@
       status.textContent = 'Network error. Please try again.';
       status.className = 'form-status error';
     } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
+      btnSubmit.disabled = false;
+      btnSubmit.textContent = 'Get My Free AI Audit';
     }
   });
 </script>

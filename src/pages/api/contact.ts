@@ -3,11 +3,11 @@ import type { APIRoute } from 'astro';
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
-    const { name, email, business, message } = body;
+    const { name, email, business, time_sinks, tools, hours_per_week, one_task } = body;
     const turnstileToken = body['cf-turnstile-response'];
 
     // Validate required fields
-    if (!name || !email || !message) {
+    if (!name || !email || !business) {
       return new Response(
         JSON.stringify({ error: 'Please fill in all required fields.' }),
         { status: 400, headers: { 'Content-Type': 'application/json' } }
@@ -36,8 +36,10 @@ export const POST: APIRoute = async ({ request }) => {
       }
     }
 
+    const timeSinksList = Array.isArray(time_sinks) ? time_sinks.join(', ') : (time_sinks || 'Not specified');
+    const toolsList = Array.isArray(tools) ? tools.join(', ') : (tools || 'Not specified');
+
     // Send email via Cloudflare Email Workers (MailChannels)
-    // This uses Cloudflare's free transactional email integration
     await fetch('https://api.mailchannels.net/tx/v1/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -49,21 +51,31 @@ export const POST: APIRoute = async ({ request }) => {
         ],
         from: {
           email: 'noreply@smolops.com',
-          name: 'SmolOps Contact Form',
+          name: 'SmolOps AI Admin Audit',
         },
-        subject: `SmolOps Inquiry from ${name}`,
+        subject: `SmolOps AI Admin Audit Request - ${name} (${business})`,
         content: [
           {
             type: 'text/plain',
             value: [
-              `New contact form submission from SmolOps.com`,
+              `New AI Admin Audit request from SmolOps.com`,
               ``,
+              `--- Contact Info ---`,
               `Name: ${name}`,
               `Email: ${email}`,
-              `Business Type: ${business || 'Not specified'}`,
               ``,
-              `Message:`,
-              `${message}`,
+              `--- Business Profile ---`,
+              `Business Type: ${business}`,
+              `Hours/week on admin: ${hours_per_week || 'Not specified'}`,
+              ``,
+              `--- Biggest Time Sinks ---`,
+              timeSinksList,
+              ``,
+              `--- Tools Currently Used ---`,
+              toolsList,
+              ``,
+              `--- If they could eliminate ONE task ---`,
+              one_task || 'Not provided',
             ].join('\n'),
           },
         ],
