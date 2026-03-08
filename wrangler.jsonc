@@ -12,5 +12,11 @@
 	},
 	"observability": {
     "enabled": true
-  }
+  },
+  "send_email": [
+    {
+      "name": "AUDIT_EMAIL",
+      "destination_address": "andynguyen11@gmail.com"
+    }
+  ]
 }
