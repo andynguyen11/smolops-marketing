@@ -6,6 +6,16 @@ export const POST: APIRoute = async ({ request }) => {
     const { name, email, business, time_sinks, tools, hours_per_week, one_task } = body;
     const turnstileToken = body['cf-turnstile-response'];
 
+    const env = (locals as any).runtime?.env;
+    const turnstileSecret = env?.TURNSTILE_SECRET_KEY;
+
+    if (!turnstileSecret) {
+      return new Response(
+        JSON.stringify({ error: 'Server CAPTCHA secret is not configured.' }),
+        { status: 500, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
     // Validate required fields
     if (!name || !email || !business) {
       return new Response(
@@ -22,7 +32,7 @@ export const POST: APIRoute = async ({ request }) => {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams({
-            secret: import.meta.env.TURNSTILE_SECRET_KEY || '',
+            secret: turnstileSecret,
             response: turnstileToken,
           }),
         }
