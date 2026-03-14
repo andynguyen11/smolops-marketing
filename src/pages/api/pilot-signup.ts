@@ -82,14 +82,14 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
     const msg = createMimeMessage();
 
-    msg.setSender({ name: 'SmolOps Inbox Agent Pilot', addr: 'audit@smolops.com' });
+    msg.setSender({ name: 'SmolOps Inbox Assistant', addr: 'audit@smolops.com' });
     msg.setRecipient('andynguyen11@gmail.com');
-    msg.setSubject(`Inbox Agent Pilot Signup - ${name} (${business_name})`);
+    msg.setSubject(`Inbox Assistant Signup - ${name} (${business_name})`);
 
     msg.addMessage({
       contentType: 'text/plain',
       data: [
-        `New Inbox Agent Pilot signup from SmolOps.com`,
+        `New Inbox Assistant signup from SmolOps.com`,
         ``,
         `--- Contact Info ---`,
         `Name: ${name}`,
